@@ -11,18 +11,11 @@ function App() {
     "marvel/marvel_logo.png",
     "dc/character_list.txt"
   ]
-  const nestedList = list.map(item => {
-    const splitItem = item.split("/")
-    console.log(splitItem)
-    return splitItem
-  })
   return (
     <>
       <h1>Hello world</h1>
       <ul>
-{/*       {nestedList.map(item => {
-
-      })} */}
+        {list.map(item => <li>{item}</li>)}
       </ul>
       
     </>
