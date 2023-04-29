@@ -10,7 +10,7 @@ export function getFileTree(fileList: string[]) {
         const parts = file.split('/');
         let currentLevel = fileTree
         //Loop over each level in the path of the file
-        parts.forEach((part, index, array) => {
+        parts.forEach((part) => {
             // See if current level already has a node with the same name as the part
             const matchingPart = currentLevel.findIndex((node) => node.name === part)
             // if not, add a node with the name of the part

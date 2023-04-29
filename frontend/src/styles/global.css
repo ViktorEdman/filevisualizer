@@ -1,0 +1,12 @@
+body {
+    background: linear-gradient(to top, #d1138f, #183d88);
+    color: white;
+    height: 100vh;
+    border: 3px;
+    box-sizing: border-box;
+}
+
+#visOptions {
+    display: flex;
+    flex-wrap: wrap;
+}
