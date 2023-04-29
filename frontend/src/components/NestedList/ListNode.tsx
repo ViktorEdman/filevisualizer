@@ -2,10 +2,11 @@ import NestedList from "./NestedList";
 import { useState } from "react";
 import styles from "./styles.module.css";
 import { VscFolder, VscFolderOpened } from "react-icons/vsc"
+import hasChildren from "../../utils/hasChildren";
 
 function ListNode({ node }: { node: TreeNode }) {
   const [showChildren, setShowChildren] = useState(false);
-  const hasChildren = node.children?.length !== 0;
+  
   return (
     <>
       <li className={styles.listItem} key={node.name}>
@@ -16,7 +17,7 @@ function ListNode({ node }: { node: TreeNode }) {
           }}
           className={styles.treeNode}
         >
-          {hasChildren ? (
+          {hasChildren(node) ? (
             <span className={styles.showChildrenIcon}>
               {showChildren ? <VscFolderOpened/> : <VscFolder/>}
             </span>

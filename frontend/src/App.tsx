@@ -1,5 +1,6 @@
 import { getFileTree } from "./utils/getFileTree";
 import NestedList from "./components/NestedList/NestedList";
+import FileBrowser from "./components/FileBrowser/FileGrid";
 import { useState } from "react";
 
 function App() {
@@ -15,10 +16,13 @@ function App() {
   ];
   const fileTree = getFileTree(list);
   const visualizations = {
-    "nested-list": <NestedList nodes={fileTree} />,
-    "file-browser": (
-      <h2>"I promised I would give you a file browser. But I lied."</h2>
+    "nested-list": (
+      <>
+        <h2>Nested List</h2>
+        <NestedList nodes={fileTree} />
+      </>
     ),
+    "file-browser": <FileBrowser nodes={fileTree} />,
   };
 
   const [selection, setSelection] = useState("nested-list");
@@ -29,26 +33,24 @@ function App() {
       <h1>File tree visualizer</h1>
       <div id="visOptions">
         <div>
-        
-        <input
-          type="radio"
-          id="nested-list"
-          value={selection}
-          checked={selection === "nested-list"}
-          onChange={() => setSelection("nested-list")}
-        />
-        <label htmlFor="nested-list"> Nested list </label>
+          <input
+            type="radio"
+            id="nested-list"
+            value={selection}
+            checked={selection === "nested-list"}
+            onChange={() => setSelection("nested-list")}
+          />
+          <label htmlFor="nested-list"> Nested list </label>
         </div>
         <div>
-        
-        <input
-          type="radio"
-          id="file-browser"
-          value={selection}
-          checked={selection === "file-browser"}
-          onChange={() => setSelection("file-browser")}
-        />
-        <label htmlFor="file-browser"> File browser </label>
+          <input
+            type="radio"
+            id="file-browser"
+            value={selection}
+            checked={selection === "file-browser"}
+            onChange={() => setSelection("file-browser")}
+          />
+          <label htmlFor="file-browser"> File browser </label>
         </div>
       </div>
       {selectedElement}
