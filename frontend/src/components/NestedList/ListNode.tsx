@@ -19,13 +19,14 @@ function ListNode({ node }: { node: TreeNode }) {
         >
           {hasChildren(node) ? (
             <span className={styles.showChildrenIcon}>
+              
               {showChildren ? <VscFolderOpened/> : <VscFolder/>}
             </span>
           ) : null}
 
           {node.name}
         </a>
-
+        {/* If state is set to show children, and the node has children, show the children */}
         {showChildren && node.children && <NestedList nodes={node.children} />}
       </li>
     </>
@@ -33,3 +34,4 @@ function ListNode({ node }: { node: TreeNode }) {
 }
 
 export default ListNode;
+            
