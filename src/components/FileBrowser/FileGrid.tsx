@@ -5,34 +5,38 @@ import hasChildren from "../../utils/hasChildren";
 import { useState } from "react";
 
 type FolderState = {
-  current: TreeNode[]
-  parent?: TreeNode[] | undefined
+  current: TreeNode[] | TreeNode
+  path?: TreeNode[]
 }
 
 function FileBrowser({ nodes = [] }: TreeProps) {
-  const [folder, setFolder] = useState<FolderState>({current: nodes, parent: undefined})
+  const [folder, setFolder] = useState<FolderState>({path: [],current: nodes})
   return (
     <>
       <h2>File browser</h2>
       <div className={styles.container}>
-        {folder.parent !== undefined
+        {folder.path && folder.path.length > 0 
         ? <div className={styles.folder} onClick={() => {
-
-          setFolder({current: folder.parent})
+          if (folder.path !== undefined){
+            const parent = folder.path[folder.path.length-1]
+            const parentPath = folder.path.slice(0, -1)
+            setFolder({current: parent, path: parentPath})
+        }
         }}>
               <MdOutlineKeyboardBackspace className={styles.folderIcon} />
               <span className={styles.folderName}>Go back</span>
           </div>
         : null}
-        {folder.current.map((node) => (
+        {folder.current.map((node: TreeNode) => (
           
           <div 
           className={styles.folder} 
           key={node.name}
           
           onClick={() => {
-            if (node.children &&hasChildren(node)){
-              setFolder({current: node.children, parent: folder.current})
+            if (folder.path && node.children && hasChildren(node)){
+              const path = [...folder.path, folder.current]
+              setFolder({path: path, current: node.children})
           }
           }}
           >
@@ -40,7 +44,7 @@ function FileBrowser({ nodes = [] }: TreeProps) {
             ? <VscFolder className={styles.folderIcon}/>
             : <VscFile className={styles.folderIcon}/>}
             
-            <span className={styles.folderName}>{node.name}</span>
+            <span className={styles.folderName} title={node.name}>{node.name}</span>
           </div>
         ))}
       </div>
