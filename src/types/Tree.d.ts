@@ -3,6 +3,6 @@ type TreeProps = {
 }
 
 type TreeNode = {
-    name: string,
+    name: string
     children?: TreeNode[]
 }
