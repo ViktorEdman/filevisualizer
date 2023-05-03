@@ -9,7 +9,10 @@ function ListNode({ node }: { node: TreeNode }) {
 
     return (
         <>
-            <li className={styles.listItem} key={node.name}>
+            <li
+                className={styles.listItem}
+                key={node.name}
+            >
                 <a
                     onClick={(e) => {
                         e.preventDefault()
@@ -26,9 +29,7 @@ function ListNode({ node }: { node: TreeNode }) {
                     {node.name}
                 </a>
                 {/* If state is set to show children, and the node has children, show the children */}
-                {showChildren && node.children && (
-                    <NestedList nodes={node.children} />
-                )}
+                {showChildren && node.children && <NestedList nodes={node.children} />}
             </li>
         </>
     )

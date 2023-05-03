@@ -23,15 +23,13 @@ function FileBrowser({ nodes = [] }: TreeProps) {
                         className={styles.folder}
                         onClick={() => {
                             if (folder.path !== undefined) {
-                                const parent =
-                                    folder.path[folder.path.length - 1]
+                                const parent = folder.path[folder.path.length - 1]
                                 const parentPath = folder.path.slice(0, -1)
                                 setFolder({ current: parent, path: parentPath })
                             }
-                        }}>
-                        <MdOutlineKeyboardBackspace
-                            className={styles.folderIcon}
-                        />
+                        }}
+                    >
+                        <MdOutlineKeyboardBackspace className={styles.folderIcon} />
                         <span className={styles.folderName}>Go back</span>
                     </div>
                 ) : null}
@@ -40,25 +38,25 @@ function FileBrowser({ nodes = [] }: TreeProps) {
                         className={styles.folder}
                         key={node.name}
                         onClick={() => {
-                            if (
-                                folder.path &&
-                                node.children &&
-                                hasChildren(node)
-                            ) {
+                            if (folder.path && node.children && hasChildren(node)) {
                                 const path = [...folder.path, folder.current]
                                 setFolder({
                                     path: path,
                                     current: node.children,
                                 })
                             }
-                        }}>
+                        }}
+                    >
                         {hasChildren(node) ? (
                             <VscFolder className={styles.folderIcon} />
                         ) : (
                             <VscFile className={styles.folderIcon} />
                         )}
 
-                        <span className={styles.folderName} title={node.name}>
+                        <span
+                            className={styles.folderName}
+                            title={node.name}
+                        >
                             {node.name}
                         </span>
                     </div>
