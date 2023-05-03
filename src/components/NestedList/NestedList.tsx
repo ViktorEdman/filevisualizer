@@ -1,11 +1,11 @@
 import ListNode from './ListNode'
 
-export function NestedList({ nodes = [] }: TreeProps) {
+export function NestedList({ node }: TreeProps) {
     return (
         <>
             <ul>
-                {nodes.map((node: TreeNode) => (
-                    <ListNode node={node} />
+                {node.children.map((child: TreeNode) => (
+                    <ListNode node={child} />
                 ))}
             </ul>
         </>

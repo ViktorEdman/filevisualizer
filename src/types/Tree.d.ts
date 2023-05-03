@@ -1,8 +1,9 @@
 type TreeProps = {
-    nodes?: TreeNode[]
+    node: TreeNode
 }
 
 type TreeNode = {
     name: string
-    children?: TreeNode[]
+    children: TreeNode[]
+    parent: TreeNode | null
 }

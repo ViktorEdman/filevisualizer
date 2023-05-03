@@ -4,7 +4,7 @@ import styles from './styles.module.css'
 import { VscFolder, VscFolderOpened } from 'react-icons/vsc'
 import hasChildren from '../../utils/hasChildren'
 
-function ListNode({ node }: { node: TreeNode }) {
+function ListNode({ node }: TreeProps) {
     const [showChildren, setShowChildren] = useState(false)
 
     return (
@@ -29,7 +29,7 @@ function ListNode({ node }: { node: TreeNode }) {
                     {node.name}
                 </a>
                 {/* If state is set to show children, and the node has children, show the children */}
-                {showChildren && node.children && <NestedList nodes={node.children} />}
+                {showChildren && node.children && <NestedList node={node} />}
             </li>
         </>
     )

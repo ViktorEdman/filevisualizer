@@ -4,28 +4,18 @@ import { MdOutlineKeyboardBackspace } from 'react-icons/md'
 import hasChildren from '../../utils/hasChildren'
 import { useState } from 'react'
 
-type FolderState = {
-    current: TreeNode[] | TreeNode
-    path?: TreeNode[]
-}
-
-function FileBrowser({ nodes = [] }: TreeProps) {
-    const [folder, setFolder] = useState<FolderState>({
-        path: [],
-        current: nodes,
-    })
+function FileBrowser({ node }: TreeProps) {
+    const [currentNode, setCurrentNode] = useState(node)
     return (
         <>
             <h2>File browser</h2>
             <div className={styles.container}>
-                {folder.path && folder.path.length > 0 ? (
+                {currentNode.parent !== null ? (
                     <div
                         className={styles.folder}
                         onClick={() => {
-                            if (folder.path !== undefined) {
-                                const parent = folder.path[folder.path.length - 1]
-                                const parentPath = folder.path.slice(0, -1)
-                                setFolder({ current: parent, path: parentPath })
+                            if (currentNode.parent !== null) {
+                                setCurrentNode(currentNode.parent)
                             }
                         }}
                     >
@@ -33,17 +23,13 @@ function FileBrowser({ nodes = [] }: TreeProps) {
                         <span className={styles.folderName}>Go back</span>
                     </div>
                 ) : null}
-                {folder.current.map((node: TreeNode) => (
+                {currentNode.children.map((node: TreeNode) => (
                     <div
                         className={styles.folder}
                         key={node.name}
                         onClick={() => {
-                            if (folder.path && node.children && hasChildren(node)) {
-                                const path = [...folder.path, folder.current]
-                                setFolder({
-                                    path: path,
-                                    current: node.children,
-                                })
+                            if (node.children.length > 0) {
+                                setCurrentNode(node)
                             }
                         }}
                     >

@@ -1,6 +1,6 @@
 import { getFileTree } from './utils/getFileTree'
 import NestedList from './components/NestedList/NestedList'
-import FileBrowser from './components/FileBrowser/FileGrid'
+import FileBrowser from './components/FileBrowser/FileBrowser'
 import { useState } from 'react'
 
 function App() {
@@ -15,14 +15,15 @@ function App() {
         'marvel/black_widow/why-the-widow-is-awesome.txt',
     ]
     const fileTree = getFileTree(list)
+    console.log(fileTree)
     const visualizations = {
         'nested-list': (
             <>
                 <h2>Nested List</h2>
-                <NestedList nodes={fileTree} />
+                <NestedList node={fileTree} />
             </>
         ),
-        'file-browser': <FileBrowser nodes={fileTree} />,
+        'file-browser': <FileBrowser node={fileTree} />,
     }
 
     const [selection, setSelection] = useState('nested-list')
