@@ -4,6 +4,7 @@ services:
     build: .
     networks:
       - web
+    hostname: fileviz
     ports:
       - "8080:80"
     

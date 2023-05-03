@@ -2,9 +2,10 @@ import NestedList from './NestedList'
 import { useState } from 'react'
 import styles from './styles.module.css'
 import { VscFolder, VscFolderOpened } from 'react-icons/vsc'
+import { BsTrash3 } from 'react-icons/bs'
 import hasChildren from '../../utils/hasChildren'
 
-function ListNode({ node }: TreeProps) {
+function ListNode({ node, removeAction }: TreeProps) {
     const [showChildren, setShowChildren] = useState(false)
 
     return (
@@ -29,6 +30,15 @@ function ListNode({ node }: TreeProps) {
                     {node.name}
                 </a>
                 {/* If state is set to show children, and the node has children, show the children */}
+                <a
+                    onClick={() => {
+                        if (node.parent !== undefined && node.parent !== null) {
+                            removeAction(node, node.parent)
+                        }
+                    }}
+                >
+                    <BsTrash3 />
+                </a>
                 {showChildren && node.children && <NestedList node={node} />}
             </li>
         </>
