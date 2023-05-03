@@ -30,6 +30,10 @@
         "trailingComma": "es5",
         "tabWidth": 4,
         "semi": false,
-        "singleQuote": true
+        "singleQuote": true,
+        "endOfLine": "lf",
+        "jsxSingleQuote": true,
+        "bracketSameLine": true,
+        "bracketSpacing": true
     }
 }

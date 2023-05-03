@@ -28,8 +28,7 @@ function FileBrowser({ nodes = [] }: TreeProps) {
                                 const parentPath = folder.path.slice(0, -1)
                                 setFolder({ current: parent, path: parentPath })
                             }
-                        }}
-                    >
+                        }}>
                         <MdOutlineKeyboardBackspace
                             className={styles.folderIcon}
                         />
@@ -52,8 +51,7 @@ function FileBrowser({ nodes = [] }: TreeProps) {
                                     current: node.children,
                                 })
                             }
-                        }}
-                    >
+                        }}>
                         {hasChildren(node) ? (
                             <VscFolder className={styles.folderIcon} />
                         ) : (
