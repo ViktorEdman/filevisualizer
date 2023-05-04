@@ -5,7 +5,7 @@ export function NestedList({ node }: TreeProps) {
         <>
             <ul>
                 {node.children.map((child: TreeNode) => (
-                    <ListNode node={child} />
+                    <ListNode node={child} key={child.name}/>
                 ))}
             </ul>
         </>
