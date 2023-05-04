@@ -8,5 +8,7 @@
     "skipLibCheck": true,
     "rootDir": "src",
     "outDir": "build"                                 
-  }
+  },
+  "include": ["src"],
+  "exclude": ["sourcecode"]
 }
