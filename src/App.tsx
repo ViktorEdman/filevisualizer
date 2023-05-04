@@ -1,10 +1,10 @@
 import { getFileTree } from './utils/getFileTree'
 import NestedList from './components/NestedList/NestedList'
 import FileBrowser from './components/FileBrowser/FileBrowser'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 function App() {
-    const list = [
+    const [list, setList] = useState([
         'marvel/black_widow/bw.png',
         'marvel/drdoom/the-doctor.png',
         'marvel/marvel_logo.png',
@@ -13,7 +13,18 @@ function App() {
         'dc/character_list.txt',
         'fact_marvel_beats_dc.txt',
         'marvel/black_widow/why-the-widow-is-awesome.txt',
-    ]
+    ])
+
+    useEffect(() => {
+        const fetchData = async() => {
+            const res = await fetch('/api')
+            const data = await res.json()
+            setList(data)
+        }
+        fetchData().catch(() => {
+            console.log("Couldn't retrieve data")
+        })
+    }, [])
     const fileTree = getFileTree(list)
     console.log(fileTree)
     const visualizations = {

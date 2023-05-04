@@ -8,13 +8,13 @@ services:
     hostname: fileviz
     ports:
       - "8080:80"
+    depends_on:
+      - api
   api:
     build: ./server
     networks:
       - backend
     hostname: api
-    ports:
-      - "8580:8580"
     volumes:
       - ".:/app/sourcecode"
     

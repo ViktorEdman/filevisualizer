@@ -1,6 +1,5 @@
 export function getFileTree(fileList: string[]) {
     const fileTree: TreeNode = {name: "root", parent: null, children: []}
-
     //Loop over list of files where each file is the path of a single file
     // for example "marvel/black_widow/bw.png"
     fileList.forEach((file) => {
