@@ -1,5 +1,7 @@
 import styles from './styles.module.css'
+// @ts-ignore
 import { VscFolder, VscFile } from 'react-icons/vsc'
+// @ts-ignore
 import { MdOutlineKeyboardBackspace } from 'react-icons/md'
 import hasChildren from '../../utils/hasChildren'
 import { useState } from 'react'
