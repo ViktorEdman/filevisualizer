@@ -1,6 +1,6 @@
 # Readme
 
-This project is hosted at https://files.viktoredman.se
+This project is hosted at <a href="https://files.viktoredman.se" target="_blank">files.viktoredman.se</a>
 
 If you want to run this locally, make sure you have docker installed and run `docker-compose up -d` in the project root.  
 Thereafter, the app will be available on http://localhost:8080.
