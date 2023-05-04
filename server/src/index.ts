@@ -7,7 +7,7 @@ const PORT = 8580
 const HOST = '0.0.0.0'
 
 app.get("/api", (_, res) => {
-    const filePaths = String(child_process.execSync('find ".." -not -path "*node_modules*" -not -path "*.git*"'))
+    const filePaths = String(child_process.execSync('find "./sourcecode" -not -path "*node_modules*" -not -path "*.git*"'))
                             .split('\n')
                             .map(string => string.substring(3))
                             .filter(string => string.length > 0)

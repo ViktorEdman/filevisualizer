@@ -4,9 +4,19 @@ services:
     build: .
     networks:
       - web
+      - backend
     hostname: fileviz
     ports:
       - "8080:80"
+  api:
+    build: ./server
+    networks:
+      - backend
+    hostname: api
+    ports:
+      - "8580:8580"
+    volumes:
+      - ".:/app/sourcecode"
     
       
 networks:
