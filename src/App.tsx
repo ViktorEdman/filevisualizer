@@ -16,7 +16,7 @@ function App() {
     ])
 
     useEffect(() => {
-        const fetchData = async() => {
+        const fetchData = async () => {
             const res = await fetch('/api')
             const data = await res.json()
             setList(data)
@@ -43,26 +43,26 @@ function App() {
     return (
         <>
             <h1>File tree visualizer</h1>
-            <div id="visOptions">
+            <div id='visOptions'>
                 <div>
                     <input
-                        type="radio"
-                        id="nested-list"
+                        type='radio'
+                        id='nested-list'
                         value={selection}
                         checked={selection === 'nested-list'}
                         onChange={() => setSelection('nested-list')}
                     />
-                    <label htmlFor="nested-list"> Nested list </label>
+                    <label htmlFor='nested-list'> Nested list </label>
                 </div>
                 <div>
                     <input
-                        type="radio"
-                        id="file-browser"
+                        type='radio'
+                        id='file-browser'
                         value={selection}
                         checked={selection === 'file-browser'}
                         onChange={() => setSelection('file-browser')}
                     />
-                    <label htmlFor="file-browser"> File browser </label>
+                    <label htmlFor='file-browser'> File browser </label>
                 </div>
             </div>
             {selectedElement}

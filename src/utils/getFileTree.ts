@@ -1,5 +1,5 @@
 export function getFileTree(fileList: string[]) {
-    const fileTree: TreeNode = {name: "root", parent: null, children: []}
+    const fileTree: TreeNode = { name: 'root', parent: null, children: [] }
     //Loop over list of files where each file is the path of a single file
     // for example "marvel/black_widow/bw.png"
     fileList.forEach((file) => {
@@ -10,9 +10,7 @@ export function getFileTree(fileList: string[]) {
         //Loop over each level in the path of the file
         parts.forEach((part) => {
             // See if current level already has a node with the same name as the part
-            const matchingPart = currentLevel.children.findIndex(
-                (child) => child.name === part
-            )
+            const matchingPart = currentLevel.children.findIndex((child) => child.name === part)
             // if not, add a node with the name of the part
             if (matchingPart === -1) {
                 // save new node to be able to access it by reference

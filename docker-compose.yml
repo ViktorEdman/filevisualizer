@@ -1,25 +1,24 @@
 version: '3.3'
 services:
-  web:
-    build: .
-    networks:
-      - web
-      - backend
-    hostname: fileviz
-    ports:
-      - "8080:80"
-    depends_on:
-      - api
-  api:
-    build: ./server
-    networks:
-      - backend
-    hostname: api
-    volumes:
-      - ".:/app/sourcecode"
-    
-      
+    web:
+        build: .
+        networks:
+            - web
+            - backend
+        hostname: fileviz
+        ports:
+            - '8080:80'
+        depends_on:
+            - api
+    api:
+        build: ./server
+        networks:
+            - backend
+        hostname: api
+        volumes:
+            - '.:/app/sourcecode:ro'
+
 networks:
-  web:
-    external: true
-  backend:
+    web:
+        external: true
+    backend:
