@@ -5,7 +5,7 @@ import { VscFolder, VscFolderOpened } from 'react-icons/vsc'
 import { BsTrash3 } from 'react-icons/bs'
 import hasChildren from '../../utils/hasChildren'
 
-function ListNode({ node, removeAction }: TreeProps) {
+function ListNode({ node }: TreeProps) {
     const [showChildren, setShowChildren] = useState(false)
 
     return (
@@ -31,11 +31,6 @@ function ListNode({ node, removeAction }: TreeProps) {
                 </a>
                 {/* If state is set to show children, and the node has children, show the children */}
                 <a
-                    onClick={() => {
-                        if (node.parent !== undefined && node.parent !== null) {
-                            removeAction(node, node.parent)
-                        }
-                    }}
                 >
                     <BsTrash3 />
                 </a>
