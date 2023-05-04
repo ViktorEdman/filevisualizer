@@ -7,7 +7,7 @@
         "strict": true,
         "skipLibCheck": true,
         "rootDir": "src",
-        "outDir": "build"
+        "outDir": "dist"
     },
     "include": ["src"],
     "exclude": ["sourcecode"]
