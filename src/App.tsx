@@ -15,6 +15,8 @@ function App() {
         'marvel/black_widow/why-the-widow-is-awesome.txt',
     ])
 
+    const [showData, setShowData] = useState(false)
+
     useEffect(() => {
         const fetchData = async () => {
             const res = await fetch('/api')
@@ -29,10 +31,10 @@ function App() {
     console.log(fileTree)
     const visualizations = {
         'nested-list': (
-            <>
+            <div>
                 <h2>Nested List</h2>
                 <NestedList node={fileTree} />
-            </>
+            </div>
         ),
         'file-browser': <FileBrowser node={fileTree} />,
     }
@@ -64,8 +66,28 @@ function App() {
                     />
                     <label htmlFor='file-browser'> File browser </label>
                 </div>
+                <div>
+                    <input
+                        type='checkbox'
+                        id='showData'
+                        value='showData'
+                        checked={showData}
+                        onChange={(e) => {
+                            setShowData(e.target.checked)
+                        }}
+                    />
+                    <label htmlFor='showData'>Show source data</label>
+                </div>
             </div>
-            {selectedElement}
+            <div className='visualization-container'>
+                {selectedElement}
+                {showData ? (
+                    <div className='data-container'>
+                        <h2>Source data:</h2>
+                        <pre>{JSON.stringify(list, null, '  ')}</pre>
+                    </div>
+                ) : null}
+            </div>
         </>
     )
 }

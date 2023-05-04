@@ -7,7 +7,7 @@ import { useState } from 'react'
 function FileBrowser({ node }: TreeProps) {
     const [currentNode, setCurrentNode] = useState(node)
     return (
-        <>
+        <div>
             <h2>File browser</h2>
             <div className={styles.container}>
                 {currentNode.parent !== null ? (
@@ -48,7 +48,7 @@ function FileBrowser({ node }: TreeProps) {
                     </div>
                 ))}
             </div>
-        </>
+        </div>
     )
 }
 
