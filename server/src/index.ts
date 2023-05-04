@@ -9,7 +9,7 @@ const HOST = '0.0.0.0'
 app.get("/api", (_, res) => {
     const filePaths = String(child_process.execSync('find "./sourcecode" -not -path "*node_modules*" -not -path "*.git*"'))
                             .split('\n')
-                            .map(string => string.substring(3))
+                            .map(string => string.substring(2))
                             .filter(string => string.length > 0)
     res.send(JSON.stringify(filePaths))
 })
