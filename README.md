@@ -1,3 +1,14 @@
+### Readme
+
+If you want to run this locally, make sure you have docker installed and run docker-compose up -d in the project root.
+Thereafter, the app will be available on http://localhost:8080.
+
+When you're done, run docker-compose down in the project root.
+
+By default, the app displays the sample data below (when running with npm run dev for example)
+
+In the full docker deployment, the app lists its own source files, including this file.
+
 ### File viewer exercise
 
 Your mission is to build a UI to visualise a file tree. It will work off an array of string paths, such as this:
